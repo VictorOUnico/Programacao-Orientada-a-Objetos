@@ -35,20 +35,9 @@ public class Veiculo {
 		return ano;
 	}
 	
-	/*public void mostraVeiculo() {
-		System.out.println("---------------------------Veiculo--------------------------");
-		System.out.println("Placa: " + getPlaca());
-		System.out.println("Marca: " + getMarca());
-		System.out.println("Modelo: " + getModelo());
-		System.out.println("Fabricante: " + getFabricante());
-		System.out.println("Ano: " + getAno());
-		System.out.println("-----------------------------------------------------");
-		
-	}*/
-
 	@Override
 	public String toString() {
-		return "Placa: " + placa + "||" + "Marca: " + marca + "||" + "Modelo: " + modelo + "||" + 
-				"Fabricante: " + fabricante + "||" + "Ano: " + ano;
+		return placa + "|" +  marca + "|" +  modelo + "|" + 
+				 fabricante + "|"  + ano;
 	}
 }
