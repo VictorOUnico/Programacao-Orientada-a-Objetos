@@ -71,14 +71,14 @@ public class Veiculos {
 		this.veiculos.remove(veiculo);
 		//-----------------------------------------------------------------------
 		try{
-			ArrayList<String> aux = new ArrayList<>(); //VETOR AUXILIAR PARA SALVAR AS LINHAS DO ARQUIVO (MENOS A QUE SER¡ EXCLUIDA)
+			ArrayList<String> aux = new ArrayList<>(); //VETOR AUXILIAR PARA SALVAR AS LINHAS DO ARQUIVO (MENOS A QUE SER√Å EXCLUIDA)
 			FileReader arq = new FileReader("CadastroVeiculos.txt");
 			BufferedReader lerArq = new BufferedReader(arq);
 			String linha = lerArq.readLine();
 			
 			while(linha != null) {
 				if(linha.equals(veiculo.toString()) == false) {
-					aux.add(linha);	//SALVA TODAS AS LINHAS MENOS A DO VEICULO QUE SER¡ EXCLUIDO.
+					aux.add(linha);	//SALVA TODAS AS LINHAS MENOS A DO VEICULO QUE SER√Å EXCLUIDO.
 				}
 				linha = lerArq.readLine();
 			}
@@ -105,6 +105,7 @@ public class Veiculos {
 	
 	public void mostraVeiculosCadastrados() throws IOException {
 		System.out.println("Lista de Veiculos: \n");
+		//-------------------------------------------------------------
 		ArrayList<String> linhas = new ArrayList<String>();
 		FileReader arq = new FileReader("CadastroVeiculos.txt");
 		BufferedReader lerArq = new BufferedReader(arq);
@@ -132,61 +133,115 @@ public class Veiculos {
 			FileReader arq = new FileReader("CadastroVeiculos.txt");
 			BufferedReader lerArq = new BufferedReader(arq);
 			String linha = lerArq.readLine();
-			
 			while(linha != null) {
-				for(Veiculo veiculo : veiculos) {
-					if(veiculo.getPlaca().equals(placa)) {
-						System.out.println(veiculo.toString());
+				String[] vetor = linha.split("\\|");
+				if(vetor[0].equals(placa)) {
+					for(int i = 0; i < vetor.length; i++) {
+						System.out.println(vetor[i]);
 					}
 				}
+				linha = lerArq.readLine();
 			}
-			
+			arq.close();
+			lerArq.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
 	
 	public void buscaPorFabricante() {
-		System.out.println("Digite a placa do veiculo que deseja procurar: ");
+		System.out.println("Digite o Fabricante do veiculo que deseja procurar: ");
 		input = new Scanner(System.in);
 		String fabricante = input.nextLine();
-		for(Veiculo veiculo : veiculos) {
-			if(veiculo.getFabricante().equals(fabricante)) {
-				System.out.println(veiculo.toString());
+		try {
+			FileReader arq = new FileReader("CadastroVeiculos.txt");
+			BufferedReader lerArq = new BufferedReader(arq);
+			String linha = lerArq.readLine();
+			while(linha != null) {
+				String[] vetor = linha.split("\\|");
+				if(vetor[3].equals(fabricante)) {
+					for(int i = 0; i < vetor.length; i++) {
+						System.out.println(vetor[i]);
+					}
+				}
+				linha = lerArq.readLine();
 			}
+			arq.close();
+			lerArq.close();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 	
 	public void buscaPorModelo() {
-		System.out.println("Digite a placa do veiculo que deseja procurar: ");
+		System.out.println("Digite o Modelo do veiculo que deseja procurar: ");
 		input = new Scanner(System.in);
 		String modelo = input.nextLine();
-		for(Veiculo veiculo : veiculos) {
-			if(veiculo.getModelo().equals(modelo)) {
-				System.out.println(veiculo.toString());
+		try {
+			FileReader arq = new FileReader("CadastroVeiculos.txt");
+			BufferedReader lerArq = new BufferedReader(arq);
+			String linha = lerArq.readLine();
+			while(linha != null) {
+				String[] vetor = linha.split("\\|");
+				if(vetor[2].equals(modelo)) {
+					for(int i = 0; i < vetor.length; i++) {
+						System.out.println(vetor[i]);
+					}
+				}
+				linha = lerArq.readLine();
 			}
+			arq.close();
+			lerArq.close();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 	
-	public void buscaPorAno() {
-		System.out.println("Digite a placa do veiculo que deseja procurar: ");
+	public void buscaPorAno() {		
+		System.out.println("Digite o Ano do veiculo que deseja procurar: ");
 		input = new Scanner(System.in);
-		int ano = input.nextInt();
-		for(Veiculo veiculo : veiculos) {
-			if(veiculo.getAno() == ano) {
-				System.out.println(veiculo.toString());
+		String ano = input.nextLine();
+		try {
+			FileReader arq = new FileReader("CadastroVeiculos.txt");
+			BufferedReader lerArq = new BufferedReader(arq);
+			String linha = lerArq.readLine();
+			while(linha != null) {
+				String[] vetor = linha.split("\\|");
+				if(vetor[4].equals(ano)) {
+					for(int i = 0; i < vetor.length; i++) {
+						System.out.println(vetor[i]);
+					}
+				}
+				linha = lerArq.readLine();
 			}
+			arq.close();
+			lerArq.close();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 
 	public void buscaPorMarca() {
-		System.out.println("Digite a placa do veiculo que deseja procurar: ");
+		System.out.println("Digite a Marca do veiculo que deseja procurar: ");
 		input = new Scanner(System.in);
 		String marca = input.nextLine();
-		for(Veiculo veiculo : veiculos) {
-			if(veiculo.getMarca().equals(marca)) {
-				System.out.println(veiculo.toString());
+		try {
+			FileReader arq = new FileReader("CadastroVeiculos.txt");
+			BufferedReader lerArq = new BufferedReader(arq);
+			String linha = lerArq.readLine();
+			while(linha != null) {
+				String[] vetor = linha.split("\\|");
+				if(vetor[1].equals(marca)) {
+					for(int i = 0; i < vetor.length; i++) {
+						System.out.println(vetor[i]);
+					}
+				}
+				linha = lerArq.readLine();
 			}
+			arq.close();
+			lerArq.close();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 }
